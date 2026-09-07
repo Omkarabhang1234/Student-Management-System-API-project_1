@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Student</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="login-box">
+
+        <h1>Add Student</h1>
+
+        <form th:action="@{/students}" method="post" th:object="${student}">
+
+            <div class="input-group">
+                <label>Student Name</label>
+                <input type="text" th:field="*{name}" placeholder="Enter Student Name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" th:field="*{email}" placeholder="Enter Email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Department</label>
+                <input type="text" th:field="*{department}" placeholder="Enter Department" required>
+            </div>
+
+            <div class="input-group">
+                <label>City</label>
+                <input type="text" th:field="*{city}" placeholder="Enter City" required>
+            </div>
+
+            <button type="submit">
+                Save Student
+            </button>
+
+            <div class="register-link">
+                <a href="/dashboard">
+                    ← Back to Dashboard
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

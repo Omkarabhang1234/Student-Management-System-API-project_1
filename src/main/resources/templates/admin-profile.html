@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Profile</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+.profile-photo{
+    width:150px;
+    height:150px;
+    margin:20px auto;
+    border-radius:50%;
+    overflow:hidden;
+    border:4px solid #0d6efd;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+.profile-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+</style>
+
+<body style="background:#f5f7fa;">
+
+<div class="container mt-5">
+
+    <div class="card shadow p-4">
+
+        <div class="text-center">
+
+          <div class="profile-photo">
+    <img th:src="@{/images/omkar.jpg.png}" alt="Omkar Abhang">
+    </div>
+
+            <h2 class="mt-3">Omkar Abhang</h2>
+
+            <span class="badge bg-primary">
+                System Administrator
+            </span>
+
+        </div>
+
+        <hr>
+
+        <table class="table">
+
+            <tr>
+                <th>Name</th>
+                <td>Omkar Abhang</td>
+            </tr>
+
+            <tr>
+                <th>Role</th>
+                <td>Administrator</td>
+            </tr>
+
+            <tr>
+                <th>Email</th>
+                <td>omkar.abhang@gmail.com</td>
+            </tr>
+
+            <tr>
+                <th>Mobile</th>
+                <td>8149735380</td>
+            </tr>
+
+            <tr>
+                <th>Department</th>
+                <td>Computer Science & Engineering</td>
+            </tr>
+
+            <tr>
+                <th>Application</th>
+                <td>Student Management System</td>
+            </tr>
+
+            <tr>
+                <th>Status</th>
+                <td>
+                    <span class="badge bg-success">Active</span>
+                </td>
+            </tr>
+
+        </table>
+
+        <a href="/dashboard" class="btn btn-primary">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

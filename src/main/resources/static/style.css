@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f5f9;
+}
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.auth-container {
+    width: 950px;
+    max-width: 100%;
+    min-height: 580px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.15);
+}
+
+.brand-section {
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #1d4ed8
+    );
+    color: white;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-logo {
+    width: 70px;
+    height: 70px;
+    background: white;
+    color: #1d4ed8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.brand-section h1 {
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.brand-section p {
+    color: #dbeafe;
+    line-height: 1.7;
+}
+
+.form-section {
+    padding: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-section h2 {
+    color: #0f172a;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.form-subtitle {
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    color: #334155;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: #2563eb;
+    border: none;
+    border-radius: 9px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.message {
+    text-align: center;
+    margin-top: 15px;
+    min-height: 20px;
+    font-weight: bold;
+}
+
+.switch-page {
+    text-align: center;
+    color: #64748b;
+    margin-top: 25px;
+}
+
+.switch-page a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-section {
+        padding: 40px;
+    }
+
+    .brand-section h1 {
+        font-size: 28px;
+    }
+
+    .form-section {
+        padding: 40px 30px;
+    }
+}

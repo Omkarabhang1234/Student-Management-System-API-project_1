@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management Dashboard</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= Sidebar ================= -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+
+            <h2>SMS</h2>
+
+            <p>Student Management System</p>
+
+        </div>
+
+        <ul>
+
+            <li class="active">
+
+                <a href="/dashboard">
+
+                    🏠 Dashboard
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="/students">
+
+                    🎓 Students
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="/add-student">
+
+                    ➕ Add Student
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="/reports">
+
+                    📊 Reports
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="/settings">
+
+                    ⚙ Settings
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="/auth/logout">
+
+                    🚪 Logout
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- ================= Main Content ================= -->
+
+    <div class="main">
+
+        <!-- Header -->
+
+        <div class="header">
+
+            <div class="header-left">
+
+                <h1>Dashboard</h1>
+
+                <p>Student Management System</p>
+
+            </div>
+
+            <div class="header-right">
+
+                <form action="/search/name" method="get">
+
+                    <input
+                            type="text"
+                            name="name"
+                            placeholder="Search Student">
+
+                </form>
+
+                <button class="notification">
+
+                    🔔
+
+                </button>
+           <div class="profile" onclick="window.location.href='/admin-profile'" style="cursor:pointer;">
+    <div>
+        <h4>Omkar Abhang</h4>
+        <p>Admin</p>
+    </div>
+    <div class="profile-image">
+    <img th:src="@{/images/omkar.jpg.png}" alt="Admin Photo">
+</div>
+
+</div>
+
+</div> <!-- header-right -->
+
+</div> <!-- header -->
+
+<!-- Welcome -->
+
+<div class="welcome">
+
+            <div>
+
+                <h2>
+
+                    Welcome Back, Omkar 👋
+
+                </h2>
+
+                <p>
+
+                    Manage your Student Management System
+                    from one place.
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3 id="todayDate"></h3>
+
+            </div>
+
+        </div>
+                <!-- ================= Statistics Cards ================= -->
+
+        <div class="cards">
+
+            <div class="card blue">
+
+                <div class="icon">
+                    🎓
+                </div>
+
+                <div>
+                    <h3>Total Students</h3>
+                    <h1 th:text="${totalStudents}">0</h1>
+                    <p>Registered Students</p>
+                </div>
+
+            </div>
+
+            <div class="card green">
+
+                <div class="icon">
+                    ✔
+                </div>
+
+                <div>
+                    <h3>Active Records</h3>
+                    <h1 th:text="${totalStudents}">0</h1>
+                    <p>Current Students</p>
+                </div>
+
+            </div>
+
+            <div class="card orange">
+
+                <div class="icon">
+                    📄
+                </div>
+
+                <div>
+                    <h3>Recently Added</h3>
+                    <h1 th:text="${students.size()}">0</h1>
+                    <p>Available Records</p>
+                </div>
+
+            </div>
+
+            <div class="card red">
+
+                <div class="icon">
+                    👨‍🏫
+                </div>
+
+                <div>
+                    <h3>Faculty</h3>
+                    <h1>10</h1>
+                    <p>Teaching Staff</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= Quick Actions ================= -->
+
+        <div class="quick-actions">
+
+            <button onclick="window.location.href='/add-student'">
+                ➕ Add Student
+            </button>
+
+            <button onclick="window.location.href='/students'">
+                📋 Student List
+            </button>
+
+            <button onclick="window.location.href='/reports'">
+                📊 Reports
+            </button>
+
+            <button onclick="window.location.href='/dashboard'">
+                🏠 Dashboard
+            </button>
+
+        </div>
+
+
+
+        <!-- ================= Student Table ================= -->
+
+        <div class="table-box">
+
+            <h2>
+
+                Recently Added Students
+
+            </h2>
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Name</th>
+
+                    <th>Email</th>
+
+                    <th>Department</th>
+
+                    <th>City</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                <tr th:each="student : ${students}">
+
+                    <td th:text="${student.id}"></td>
+
+                    <td th:text="${student.name}"></td>
+
+                    <td th:text="${student.email}"></td>
+
+                    <td th:text="${student.department}"></td>
+
+                    <td th:text="${student.city}"></td>
+
+                    <td>
+
+                        <a th:href="@{/edit/{id}(id=${student.id})}"
+                           class="btn btn-primary btn-sm">
+
+                            Edit
+
+                        </a>
+
+                        <a th:href="@{/delete/{id}(id=${student.id})}"
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Are you sure?')">
+
+                            Delete
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+                <!-- ================= Progress Section ================= -->
+
+        <div class="progress-box">
+
+            <h2>Student Registration Progress</h2>
+
+            <div class="progress">
+
+                <div class="progress-bar"></div>
+
+            </div>
+
+            <p>
+                Total Registered Students :
+                <strong th:text="${totalStudents}">0</strong>
+            </p>
+
+        </div>
+
+
+        <!-- ================= Recent Activity ================= -->
+
+        <div class="activity">
+
+            <h2>Recent Activity</h2>
+
+            <ul>
+
+                <li>✔ Dashboard Loaded Successfully</li>
+
+                <li>✔ Student Records Loaded</li>
+
+                <li>✔ Database Connected</li>
+
+                <li>✔ Student Management System Running</li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ================= Footer ================= -->
+
+        <footer>
+
+            © 2026 Student Management System |
+            Developed By <strong>Omkar Abhang</strong>
+
+        </footer>
+
+    </div>
+
+</div>
+
+<script>
+
+    // Today's Date
+
+    const today = new Date();
+
+    document.getElementById("todayDate").innerHTML =
+        today.toDateString();
+
+</script>
+
+<script src="/js/dashboard.js"></script>
+
+</body>
+
+</html>
